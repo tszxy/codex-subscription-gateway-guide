@@ -1,0 +1,39 @@
+# CLIProxyAPI v8.0.24. Copy outside the Git checkout before adding secrets.
+config-version: 8
+server:
+  host: "127.0.0.1"
+  port: 8317
+management:
+  allow-remote: false
+  secret-key: ""
+  disable-control-panel: true
+access:
+  api-keys:
+    - "REPLACE_WITH_RANDOM_GATEWAY_KEY"
+oauth:
+  auth-dir: "/var/lib/cpa/auths"
+routing:
+  strategy: "fill-first"
+  session-affinity: true
+  session-affinity-ttl: "24h"
+  session-affinity-subagents: true
+  retry:
+    request-retry: 0
+    max-retry-credentials: 0
+    max-retry-interval: 0
+  cooldown:
+    disable-cooling: false
+    save-cooldown-status: true
+    transient-error-cooldown-seconds: 60
+requests:
+  streaming:
+    keepalive-seconds: 15
+    bootstrap-retries: 0
+observability:
+  logs:
+    debug: true
+    logging-to-file: false
+    request-log: false
+  usage:
+    usage-statistics-enabled: true
+

@@ -1,0 +1,23 @@
+[Unit]
+Description=Codex OAuth API gateway (CLIProxyAPI)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=cpa
+Group=cpa
+WorkingDirectory=/opt/cpa
+ExecStart=/opt/cpa/cli-proxy-api --config /opt/cpa/config.yaml
+Restart=on-failure
+RestartSec=5
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/cpa
+
+[Install]
+WantedBy=multi-user.target
+

@@ -1,0 +1,24 @@
+[Unit]
+Description=Codex gateway friendly terminal error adapter
+After=network-online.target cpa.service
+Wants=network-online.target cpa.service
+
+[Service]
+Type=simple
+User=cpa
+Group=cpa
+WorkingDirectory=/opt/codex-gateway/gateway
+Environment=CPA_UPSTREAM_URL=http://127.0.0.1:8317
+ExecStart=/opt/codex-gateway/.venv/bin/uvicorn codex_error_proxy:app --host 127.0.0.1 --port 8318 --no-access-log
+Restart=on-failure
+RestartSec=5
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+Environment=PYTHONDONTWRITEBYTECODE=1
+
+[Install]
+WantedBy=multi-user.target
+

@@ -1,0 +1,7 @@
+{
+  "Host": "gateway.example.com",
+  "Port": 22,
+  "User": "codex-model-query",
+  "KeyPath": "C:/Users/YOUR_USER/.ssh/codex_query"
+}
+

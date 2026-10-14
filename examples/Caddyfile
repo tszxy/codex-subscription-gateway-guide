@@ -1,0 +1,15 @@
+gateway.example.com {
+    @api path /v1/*
+    handle @api {
+        reverse_proxy 127.0.0.1:8318 {
+            flush_interval -1
+        }
+    }
+    handle /healthz {
+        respond "gateway online" 200
+    }
+    handle {
+        respond "Not found" 404
+    }
+}
+
